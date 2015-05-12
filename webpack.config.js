@@ -18,8 +18,9 @@ module.exports = {
   debug: true,
   devtool: false,
   entry: [
-      'webpack/hot/only-dev-server',
-      './src/components/main.js'
+    'webpack-dev-server/client?http://localhost:8000',
+    'webpack/hot/only-dev-server',
+    './src/components/main.js'
   ],
 
   stats: {
@@ -28,23 +29,24 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js'],
+    extensions: ['', '.js', '.jsx'],
     alias: {
-      'styles': __dirname + '/src/styles',
-      'mixins': __dirname + '/src/mixins',
+      'actions': __dirname + '/src/actions/',
       'components': __dirname + '/src/components/',
+      'mixins': __dirname + '/src/mixins',
+      'routes': __dirname + '/src/routes/',
       'stores': __dirname + '/src/stores/',
-      'actions': __dirname + '/src/actions/'
+      'styles': __dirname + '/src/styles'
     }
   },
   module: {
     preLoaders: [{
-      test: /\.js$/,
+      test: /\.jsx?$/,
       exclude: /node_modules/,
       loader: 'jsxhint'
     }],
     loaders: [{
-      test: /\.js$/,
+      test: /\.jsx?$/,
       exclude: /node_modules/,
       loader: 'react-hot!babel-loader'
     }, {
@@ -56,6 +58,9 @@ module.exports = {
     }, {
       test: /\.(png|jpg|woff|woff2)$/,
       loader: 'url-loader?limit=8192'
+    }, {
+      test: /\.json$/,
+      loader: 'json-loader'
     }]
   },
 
