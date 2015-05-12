@@ -1,22 +1,30 @@
 'use strict';
 
-var path = require('path');
+var path = require('path'),
+  CONF = {
+    "pkg": require('./package.json').config
+  };
 
 module.exports = function (config) {
   config.set({
     basePath: '',
     frameworks: ['jasmine'],
+
     files: [
       'test/helpers/**/*.js',
+      'test/spec/actions/**/*.js',
       'test/spec/components/**/*.js',
-      'test/spec/stores/**/*.js',
-      'test/spec/actions/**/*.js'
+      'test/spec/routes/**/*.js',
+      'test/spec/stores/**/*.js'
     ],
+
     preprocessors: {
+      'test/spec/actions/**/*.js': ['webpack'],
       'test/spec/components/**/*.js': ['webpack'],
-      'test/spec/stores/**/*.js': ['webpack'],
-      'test/spec/actions/**/*.js': ['webpack']
+      'test/spec/routes/**/*.js': ['webpack'],
+      'test/spec/stores/**/*.js': ['webpack']
     },
+
     webpack: {
       cache: true,
       module: {
@@ -30,7 +38,7 @@ module.exports = function (config) {
           test: /\.png/,
           loader: 'url-loader?limit=10000&mimetype=image/png'
         }, {
-          test: /\.js$/,
+          test: /\.jsx?$/,
           loader: 'babel-loader'
         }, {
           test: /\.scss/,
@@ -48,23 +56,28 @@ module.exports = function (config) {
       },
       resolve: {
         alias: {
-          'styles': path.join(process.cwd(), './src/styles/'),
-          'components': path.join(process.cwd(), './src/components/'),
-          'stores': '../../../src/stores/',
-          'actions': '../../../src/actions/'
+          'styles': path.join(__dirname, './src/styles/'),
+          'components': path.join(__dirname, './src/components/'),
+          'stores': path.join(__dirname, './src/stores/'),
+          'actions': path.join(__dirname, './src/actions/'),
+          'routes': path.join(__dirname, './src/routes/'),
         }
       }
     },
+
     webpackServer: {
       stats: {
         colors: true
       }
     },
+
     exclude: [],
-    port: 8080,
+    port: CONF.pkg.port_test,
+
     logLevel: config.LOG_INFO,
     colors: true,
     autoWatch: false,
+
     // Start these browsers, currently available:
     // - Chrome
     // - ChromeCanary

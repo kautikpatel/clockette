@@ -4,11 +4,19 @@
   "description": "",
   "repository": "",
   "private": true,
-  "src": "src",
-  "test": "test",
-  "dist": "dist",
-  "mainInput": "main",
-  "mainOutput": "main",
+
+  "config": {
+    "src": "src",
+    "test": "test",
+    "dist": "dist",
+
+    "mainInput": "main",
+    "mainOutput": "main",
+
+    "port_server": 8000,
+    "port_test": 8001
+  },
+
   "dependencies": {
     "lodash": "^3.8.0",
     "moment-timezone": "^0.3.1",
@@ -17,6 +25,7 @@
     "react-router": "*",
     "reflux": "^0.2.7"
   },
+
   "devDependencies": {
     "babel": "^4.0.0",
     "babel-loader": "^4.0.0",
