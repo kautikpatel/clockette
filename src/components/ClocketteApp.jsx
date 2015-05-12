@@ -1,11 +1,10 @@
 'use strict';
 
-import React from 'react/addons';
-const ReactTransitionGroup = React.addons.TransitionGroup;
+import React from 'react';
 
 // CSS
 import 'normalize.css';
-import '../styles/main.css';
+import 'styles/main.css';
 
 const ClocketteApp = React.createClass({
   render: function() {
