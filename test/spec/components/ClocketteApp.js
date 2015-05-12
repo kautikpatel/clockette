@@ -1,15 +1,15 @@
 'use strict';
 
 describe('ClocketteApp', function () {
-  var React = require('react/addons');
+  var React = require('react');
   var ClocketteApp, component;
 
   beforeEach(function () {
     var container = document.createElement('div');
-    container.id = 'content';
+    container.id = 'ClocketteApp';
     document.body.appendChild(container);
 
-    ClocketteApp = require('components/ClocketteApp.js');
+    ClocketteApp = require('components/ClocketteApp.jsx');
     component = React.createElement(ClocketteApp);
   });
 
