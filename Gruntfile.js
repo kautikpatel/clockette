@@ -60,7 +60,8 @@ module.exports = function (grunt) {
         delay: 500
       },
       dev: {
-        path: 'http://localhost:<%= connect.options.port %>/webpack-dev-server/'
+        path: 'http://localhost:<%= connect.options.port %>/webpack-dev-server/',
+        app: 'Google Chrome Canary'
       },
       dist: {
         path: 'http://localhost:<%= connect.options.port %>/'
@@ -111,10 +112,11 @@ module.exports = function (grunt) {
       return grunt.task.run(['build', 'open:dist', 'connect:dist']);
     }
 
-    grunt.task.run([
-      'open:dev',
-      'webpack-dev-server'
-    ]);
+    if (target === 'open') {
+      return grunt.task.run(['open:dev', 'webpack-dev-server']);
+    }
+
+    grunt.task.run(['webpack-dev-server']);
   });
 
   grunt.registerTask('test', ['karma']);
