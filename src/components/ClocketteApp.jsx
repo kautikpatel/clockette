@@ -7,7 +7,7 @@ import 'normalize.css';
 import 'styles/main.css';
 
 const ClocketteApp = React.createClass({
-  render: function() {
+  render() {
     return (
       <p>It's working!</p>
     );
