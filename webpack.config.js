@@ -5,7 +5,9 @@
  * the subfolder /webpack-dev-server/ is visited. Visiting the root will not automatically reload.
  */
 'use strict';
-var webpack = require('webpack');
+
+var webpack = require('webpack'),
+  path = require('path');
 
 module.exports = {
 
@@ -29,39 +31,33 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['', '.json', '.js', '.jsx'],
     alias: {
       'actions': __dirname + '/src/actions/',
       'components': __dirname + '/src/components/',
-      'mixins': __dirname + '/src/mixins',
+      'mixins': __dirname + '/src/mixins/',
       'routes': __dirname + '/src/routes/',
       'stores': __dirname + '/src/stores/',
-      'styles': __dirname + '/src/styles'
+      'styles': __dirname + '/src/styles/',
+
+      'test': __dirname + '/test/',
     }
   },
+
   module: {
     preLoaders: [{
       test: /\.jsx?$/,
       exclude: /node_modules/,
       loader: 'jsxhint'
     }],
-    loaders: [{
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loader: 'react-hot!babel-loader'
-    }, {
-      test: /\.scss/,
-      loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded'
-    }, {
-      test: /\.css$/,
-      loader: 'style-loader!css-loader'
-    }, {
-      test: /\.(png|jpg|woff|woff2)$/,
-      loader: 'url-loader?limit=8192'
-    }, {
-      test: /\.json$/,
-      loader: 'json-loader'
-    }]
+
+    loaders: [
+      { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader'},
+      { test: /\.css$/, loader: 'style-loader!css-loader'},
+      { test: /\.scss/, loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded' },
+      { test: /\.(png|jpg|woff|woff2)$/, loader: 'url-loader?limit=8192'},
+      { test: /\.json$/, loader: 'json-loader'}
+    ]
   },
 
   plugins: [

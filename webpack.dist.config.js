@@ -6,7 +6,8 @@
 
 'use strict';
 
-var webpack = require('webpack');
+var webpack = require('webpack'),
+  path = require('path');
 
 module.exports = {
 
@@ -33,36 +34,30 @@ module.exports = {
   ],
 
   resolve: {
-    extensions: ['', '.js'],
+    extensions: ['', '.json', '.js', '.jsx'],
     alias: {
-      'styles': __dirname + '/src/styles',
-      'mixins': __dirname + '/src/mixins',
+      'actions': __dirname + '/src/actions/',
       'components': __dirname + '/src/components/',
+      'mixins': __dirname + '/src/mixins',
+      'routes': __dirname + '/src/routes/',
       'stores': __dirname + '/src/stores/',
-      'actions': __dirname + '/src/actions/'
+      'styles': __dirname + '/src/styles'
     }
   },
 
   module: {
     preLoaders: [{
-      test: /\.js$/,
+      test: /\.jsx?$/,
       exclude: /node_modules/,
       loader: 'jsxhint'
     }],
 
-    loaders: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader'
-    }, {
-      test: /\.css$/,
-      loader: 'style-loader!css-loader'
-    }, {
-      test: /\.scss/,
-      loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded'
-    }, {
-      test: /\.(png|jpg|woff|woff2)$/,
-      loader: 'url-loader?limit=8192'
-    }]
+    loaders: [
+      { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader'},
+      { test: /\.css$/, loader: 'style-loader!css-loader'},
+      { test: /\.scss/, loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded' },
+      { test: /\.(png|jpg|woff|woff2)$/, loader: 'url-loader?limit=8192'},
+      { test: /\.json$/, loader: 'json-loader'}
+    ]
   }
 };
