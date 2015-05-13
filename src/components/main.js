@@ -11,6 +11,6 @@ var Routes = (
   </Route>
 );
 
-Router.run(Routes, function (Handler) {
+Router.run(Routes, function(Handler) {
   React.render(<Handler/>, document.getElementById('ClocketteApp'));
 });
