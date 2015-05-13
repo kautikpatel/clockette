@@ -1,7 +1,7 @@
 'use strict';
 
 describe('ClocketteApp', function () {
-  var React = require('react');
+  var React = require('react/addons');
   var ClocketteApp, component;
 
   beforeEach(function () {
