@@ -1,6 +1,7 @@
 'use strict';
 
 var path = require('path'),
+  _ = require('lodash'),
   CONF = {
     "pkg": require('./package.json').config
   };
@@ -25,47 +26,10 @@ module.exports = function (config) {
       'test/spec/stores/**/*.js': ['webpack']
     },
 
-    webpack: {
-      cache: true,
-      module: {
-        loaders: [{
-          test: /\.gif/,
-          loader: 'url-loader?limit=10000&mimetype=image/gif'
-        }, {
-          test: /\.jpg/,
-          loader: 'url-loader?limit=10000&mimetype=image/jpg'
-        }, {
-          test: /\.png/,
-          loader: 'url-loader?limit=10000&mimetype=image/png'
-        }, {
-          test: /\.jsx?$/,
-          loader: 'babel-loader'
-        }, {
-          test: /\.scss/,
-          loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded'
-        }, {
-          test: /\.css$/,
-          loader: 'style-loader!css-loader'
-        }, {
-          test: /\.woff/,
-          loader: 'url-loader?limit=10000&mimetype=application/font-woff'
-        }, {
-          test: /\.woff2/,
-          loader: 'url-loader?limit=10000&mimetype=application/font-woff2'
-        }]
-      },
-      resolve: {
-        alias: {
-          'styles': path.join(__dirname, './src/styles/'),
-          'components': path.join(__dirname, './src/components/'),
-          'stores': path.join(__dirname, './src/stores/'),
-          'actions': path.join(__dirname, './src/actions/'),
-          'routes': path.join(__dirname, './src/routes/'),
-        }
-      }
-    },
+    webpack: _.pick(require('./webpack.config.js'), ['resolve', 'module']),
 
     webpackServer: {
+      noInfo: true,
       stats: {
         colors: true
       }
