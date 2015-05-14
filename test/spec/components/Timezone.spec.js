@@ -5,10 +5,11 @@ import $ from 'test/helpers/clockette-utils.jsx';
 
 
 describe('Timezone', function() {
-  var Timezone, expected;
+  var Timezone, expected, now, template;
 
   beforeEach(function() {
     Timezone = require('components/Timezone.jsx');
+    now = new Date();
 
     expected = (function(now) {
       var hours = now.getHours(),
@@ -20,7 +21,18 @@ describe('Timezone', function() {
       A = (hours < 12 || hours === 24) ? 'AM' : 'PM';
 
       return `${h}:${mm} ${A}`;
-    })(new Date());
+    })(now);
+  });
+
+
+  it('should output a formatted timezone without arguments', function() {
+    var component = $(
+      <Timezone>
+        <span>h:mm A</span>
+      </Timezone>
+    );
+
+    expect(component.find('span').innerText).toBe(expected);
   });
 
 
@@ -48,23 +60,38 @@ describe('Timezone', function() {
 
   it('should output a formatted timezone with custom timestamp and zone', function() {
     var component = $(
-      <Timezone ts="1431554816327" zone="America/Los_Angeles">
+      <Timezone ts="1430741520000" zone="America/Los_Angeles">
         <span>h:mm A</span>
       </Timezone>
     );
 
-    expect(component.find('span').innerText).toBe('3:06 PM');
+    expect(component.find('span').innerText).toBe('5:12 AM');
   });
 
 
   it('should output a formatted timezone with custom timestamp and offset', function() {
     var component = $(
-      <Timezone ts="1431554816327" offset="420">
+      <Timezone ts="1430741520000" offset="420">
         <span>h:mm A</span>
       </Timezone>
     );
 
-    expect(component.find('span').innerText).toBe('3:06 PM');
+    expect(component.find('span').innerText).toBe('5:12 AM');
+  });
+
+
+  it('should output a formatted timezone in a nested node', function() {
+    var component = $(
+      <Timezone>
+        <div>
+          <span>h:mm A</span>
+          <span>YYYY</span>
+        </div>
+      </Timezone>
+    );
+
+    expect(component.find('span')[0].innerText).toBe(expected);
+    expect(component.find('span')[1].innerText).toBe(String(now.getFullYear()));
   });
 
 });
