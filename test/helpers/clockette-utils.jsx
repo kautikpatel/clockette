@@ -20,16 +20,16 @@ class RenderedComponent {
     // Find by className
     if (findClassName !== null) {
       results = ReactTestUtils.scryRenderedDOMComponentsWithClass(
-          this.renderedComponent,
-          findClassName[1]
-        ).map(this.getDOMNode);
+        this.renderedComponent,
+        findClassName[1]
+      ).map(this.getDOMNode);
     }
     // Else find by tagName
     else {
       results = ReactTestUtils.scryRenderedDOMComponentsWithTag(
-          this.renderedComponent,
-          selector
-        ).map(this.getDOMNode);
+        this.renderedComponent,
+        selector
+      ).map(this.getDOMNode);
     }
 
     return results.length === 1 ? results[0] : results;
