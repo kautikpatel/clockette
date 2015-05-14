@@ -5,9 +5,11 @@ var React = require('react');
 var Router = require('react-router');
 var Route = Router.Route;
 
+var HomeScreen = require('./HomeScreen');
+
 var Routes = (
   <Route handler={ClocketteApp}>
-    <Route name="/" handler={ClocketteApp}/>
+    <Route name="/" handler={HomeScreen}/>
   </Route>
 );
 

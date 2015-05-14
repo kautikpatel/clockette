@@ -1,0 +1,26 @@
+.HomeScreen {
+}
+.HomeScreen__top {
+  padding: 20px 20px 30px 20px;
+}
+.HomeScreen__bottom {
+  padding: 30px 20px 20px 20px;
+}
+
+.HomeScreen__clock {
+  text-align: center;
+}
+.HomeScreen__clock-hour {
+  font-size: 8rem;
+  font-weight: 100;
+}
+.HomeScreen__clock-ampm {
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.HomeScreen__date {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
