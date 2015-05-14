@@ -16,8 +16,8 @@ describe('Timezone', function() {
         minutes = now.getMinutes(),
         h, mm, A;
 
-      h = hours > 12 ? (hours - 12) : hours;
-      mm = minutes < 10 ? ('0' + minutes) : minutes;
+      h = (hours === 0) ? 12 : (hours > 12) ? hours - 12 : hours;
+      mm = (minutes < 10) ? '0' + minutes : minutes;
       A = (hours < 12 || hours === 24) ? 'AM' : 'PM';
 
       return `${h}:${mm} ${A}`;
