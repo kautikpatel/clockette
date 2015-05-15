@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Timezone from 'components/Timezone';
+import ButtonLanguage from 'components/ButtonLanguage';
 
 import 'styles/HomeScreen.scss';
 
@@ -28,6 +29,8 @@ const HomeScreen = React.createClass({
         <div className="HomeScreen__bottom">
         </div>
 
+        <ButtonLanguage className="HomeScreen__addTimezoneButton"/>
+
       </div>
     );
   }
@@ -35,4 +38,3 @@ const HomeScreen = React.createClass({
 });
 
 export default HomeScreen;
-
