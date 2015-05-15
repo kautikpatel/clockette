@@ -5,14 +5,14 @@ import $ from 'test/helpers/clockette-utils.jsx';
 
 
 describe('Timezone', function() {
-  var Timezone, expected, now;
+  let Timezone, expected, now;
 
   beforeEach(function() {
     Timezone = require('components/Timezone.jsx');
     now = new Date();
 
     expected = (function(now) {
-      var hours = now.getHours(),
+      let hours = now.getHours(),
         minutes = now.getMinutes(),
         h, mm, A;
 
@@ -26,7 +26,7 @@ describe('Timezone', function() {
 
 
   it('should output a formatted timezone without arguments', function() {
-    var $component = $(
+    let $component = $(
       <Timezone>
         <span>h:mm A</span>
       </Timezone>
@@ -37,7 +37,7 @@ describe('Timezone', function() {
 
 
   it('should output a formatted timezone with custom zone', function() {
-    var $component = $(
+    let $component = $(
       <Timezone zone="America/Los_Angeles">
         <span>h:mm A</span>
       </Timezone>
@@ -48,7 +48,7 @@ describe('Timezone', function() {
 
 
   it('should output a formatted timezone with custom offset', function() {
-    var $component = $(
+    let $component = $(
       <Timezone offset="420">
         <span>h:mm A</span>
       </Timezone>
@@ -59,7 +59,7 @@ describe('Timezone', function() {
 
 
   it('should output a formatted timezone with custom timestamp and zone', function() {
-    var $component = $(
+    let $component = $(
       <Timezone ts="1430741520000" zone="America/Los_Angeles">
         <span>h:mm A</span>
       </Timezone>
@@ -70,7 +70,7 @@ describe('Timezone', function() {
 
 
   it('should output a formatted timezone with custom timestamp and offset', function() {
-    var $component = $(
+    let $component = $(
       <Timezone ts="1430741520000" offset="420">
         <span>h:mm A</span>
       </Timezone>
@@ -81,7 +81,7 @@ describe('Timezone', function() {
 
 
   it('should output a formatted timezone in a nested node', function() {
-    var $component = $(
+    let $component = $(
       <Timezone>
         <div>
           <span>h:mm A</span>

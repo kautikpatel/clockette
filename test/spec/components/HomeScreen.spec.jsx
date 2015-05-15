@@ -5,7 +5,7 @@ import $ from 'test/helpers/clockette-utils.jsx';
 
 
 describe('HomeScreen', function() {
-  var Home, $component;
+  let Home, $component;
 
   beforeEach(function() {
     Home = require('components/HomeScreen.jsx');
