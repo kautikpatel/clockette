@@ -13,17 +13,13 @@ module.exports = function (config) {
 
     files: [
       'test/helpers/**/*.js',
-      'test/spec/actions/**/*.js',
-      'test/spec/components/**/*.js',
-      'test/spec/routes/**/*.js',
-      'test/spec/stores/**/*.js'
+      'test/spec/**/*.js',
+      'test/spec/**/*.jsx',
     ],
 
     preprocessors: {
-      'test/spec/actions/**/*.js': ['webpack'],
-      'test/spec/components/**/*.js': ['webpack'],
-      'test/spec/routes/**/*.js': ['webpack'],
-      'test/spec/stores/**/*.js': ['webpack']
+      'test/spec/**/*.js': ['webpack'],
+      'test/spec/**/*.jsx': ['webpack'],
     },
 
     webpack: _.pick(require('./webpack.config.js'), ['resolve', 'module']),
