@@ -4,13 +4,15 @@
   padding: 20px 20px 30px 20px;
 }
 .HomeScreen__bottom {
-  padding: 30px 20px 20px 20px;
+  padding: 30px 0 20px 0;
 }
 
 .HomeScreen__clock {
   text-align: center;
 }
-.HomeScreen__clock-hour {
+.HomeScreen__clock-time {
+  display: inline-block;
+  margin-right: 10px;
   font-size: 8rem;
   font-weight: 100;
 }
@@ -51,4 +53,35 @@
     height: 30px;
     fill: white;
   }
+}
+
+
+.HomeScreen__userTimezone {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.HomeScreen__userTimezone__city {
+  flex: 1;
+  text-align: left;
+  font-size: 1.3rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  vertical-align: middle;
+}
+.HomeScreen__userTimezone__day {
+  color: rgba(255,255,255, .7);
+  font-weight: 300;
+}
+
+.HomeScreen__userTimezone__time {
+  display: inline-block;
+  margin-right: 5px;
+  font-size: 4rem;
+  font-weight: 100;
+}
+.HomeScreen__userTimezone__ampm {
+  font-size: 1.4rem;
+  font-weight: 300;
 }
