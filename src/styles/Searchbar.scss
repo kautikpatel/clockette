@@ -1,0 +1,38 @@
+.Searchbar {
+  position: relative;
+  height: 30px;
+
+  .textInput {
+    width: 100%;
+    line-height: 30px;
+    padding: 0 2px;
+  }
+
+  .IconSearch {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    svg {
+      width: 24px;
+      height: 24px;
+      fill: rgba(255,255,255, 1);
+    }
+  }
+  .IconClose {
+    position: absolute;
+    top: 8px;
+    right: 2px;
+    -webkit-transform: translate3d(99999px, 0, 0);
+
+    &[data-show="1"] {
+      -webkit-transform: translate3d(0, 0, 0);
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+      fill: rgba(255,255,255, .3);
+    }
+  }
+}
