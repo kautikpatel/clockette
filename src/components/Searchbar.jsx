@@ -21,20 +21,24 @@ const Searchbar = React.createClass({
   },
 
   startSearching(e) {
-    this.setState({
-      searching: true
-    }, function() {
-      this.refs.textInput.getDOMNode().focus();
-    });
+    this.setState(
+      { searching: true },
+      this.focus
+    );
+  },
+
+  focus() {
+    this.refs.textInput.getDOMNode().focus();
   },
 
   onTextInputChange(e) {
     const term = _.trim(e.target.value);
-    this.setState({
-      empty: term.length ? false : true
-    }, function() {
-      UserActions.searchByName(term);
-    });
+    this.setState(
+      { empty: term.length ? false : true },
+      function() {
+        UserActions.searchByName(term);
+      }
+    );
   },
 
   render() {
