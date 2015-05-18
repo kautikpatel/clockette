@@ -1,5 +1,6 @@
 'use strict';
 
+import _ from 'lodash';
 import React from 'react';
 
 import 'styles/MaterialIcon.scss';
@@ -8,12 +9,15 @@ import 'styles/MaterialIcon.scss';
 const MaterialIcon = React.createClass({
 
   propTypes: {
-    'src': React.PropTypes.string,
+    'icon': React.PropTypes.string.isRequired,
   },
 
   render() {
+    const classes = ['MaterialIcon', this.props.className];
+    const props = _.omit(this.props, ['icon', 'className']);
+
     return (
-      <div className={this.props.className} dangerouslySetInnerHTML={{__html: this.props.icon}}/>
+      <div {...props} className={classes.join(' ').trim()} dangerouslySetInnerHTML={{__html: this.props.icon}}/>
     );
   }
 

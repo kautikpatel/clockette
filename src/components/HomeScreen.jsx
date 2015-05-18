@@ -1,8 +1,11 @@
 'use strict';
 
 import React from 'react';
+import { Link } from 'react-router';
 import Timezone from 'components/Timezone';
-import ButtonLanguage from 'components/ButtonLanguage';
+import MaterialIcon from 'components/MaterialIcon';
+
+import IconLanguage from 'material-design-icons/action/svg/production/ic_language_48px.svg';
 
 import 'styles/HomeScreen.scss';
 
@@ -29,7 +32,9 @@ const HomeScreen = React.createClass({
         <div className="HomeScreen__bottom">
         </div>
 
-        <ButtonLanguage className="HomeScreen__addTimezoneButton"/>
+        <Link to="/timezones">
+          <MaterialIcon icon={IconLanguage} className="HomeScreen__addTimezoneButton"/>
+        </Link>
 
       </div>
     );

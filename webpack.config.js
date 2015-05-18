@@ -54,8 +54,9 @@ module.exports = {
     loaders: [
       { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader'},
       { test: /\.css$/, loader: 'style-loader!css-loader'},
-      { test: /\.scss/, loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded' },
+      { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded' },
       { test: /\.(png|jpg|woff|woff2)$/, loader: 'url-loader?limit=8192'},
+      { test: /\.svg$/, loader: 'raw-loader'},
       { test: /\.json$/, loader: 'json-loader'}
     ]
   },
