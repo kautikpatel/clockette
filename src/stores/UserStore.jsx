@@ -33,9 +33,11 @@ const UserStore = Reflux.createStore({
       storage = [];
     }
 
-    this.data = Immutable.Set(storage).map((zone) => {
-      return TimezoneStore.data.find((tszone) => tszone.name === zone.name);
-    });
+    this.data = Immutable.List(
+      storage.map((tz) => {
+        return TimezoneStore.getBy('zone', tz.zone).first();
+      })
+    );
   },
 
   save() {
