@@ -124,13 +124,15 @@ const AddTimezoneScreen = React.createClass({
 
   getInitialState() {
     return {
-      searchResults: Immutable.List(),
+      searching: false,
+      searchResults: null,
     };
   },
 
   onTimezoneStoreUpdate(action, data) {
     if (action === 'searchByName') {
       this.setState({
+        searching: !!data.query.length,
         searchResults: data.results,
       });
     }
@@ -139,7 +141,7 @@ const AddTimezoneScreen = React.createClass({
   render() {
     let content;
 
-    if (this.state.searchResults.size) {
+    if (this.state.searching) {
       content = (
         <div className="AddTimezoneScreen__content--searching">
           <SearchingTimezones ts={this.props.ts} list={this.state.searchResults}/>
