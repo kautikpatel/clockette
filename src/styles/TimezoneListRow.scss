@@ -1,0 +1,19 @@
+.TimezoneListRow {
+  display: flex;
+  padding: 20px 0;
+  align-items: center;
+}
+
+.TimezoneListRow__checkbox {
+  text-align: left;
+}
+.TimezoneListRow__city {
+  flex: 1;
+  margin-left: 15px;
+  text-align: left;
+  text-transform: capitalize;
+}
+.TimezoneListRow__time {
+  text-align: right;
+  color: rgba(255,255,255, .7);
+}
