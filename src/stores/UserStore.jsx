@@ -1,8 +1,9 @@
 'use strict';
 
-import Reflux from 'reflux';
 import Immutable from 'immutable';
+import Reflux from 'reflux';
 import UserActions from 'actions/UserActionCreators';
+import TimezoneStore from 'stores/TimezoneStore';
 
 
 const UserStore = Reflux.createStore({
@@ -32,7 +33,9 @@ const UserStore = Reflux.createStore({
       storage = [];
     }
 
-    this.data = Immutable.List(storage);
+    this.data = Immutable.Set(storage).map((zone) => {
+      return TimezoneStore.data.find((tszone) => tszone.name === zone.name);
+    });
   },
 
   save() {
@@ -41,7 +44,7 @@ const UserStore = Reflux.createStore({
   },
 
   onAdd(zone) {
-    this.data = this.data.push(zone);
+    this.data = this.data.add(zone);
     this.save();
   },
 
