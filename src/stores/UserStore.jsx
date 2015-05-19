@@ -46,7 +46,7 @@ const UserStore = Reflux.createStore({
   },
 
   onAdd(zone) {
-    this.data = this.data.add(zone);
+    this.data = this.data.push(zone);
     this.save();
   },
 
