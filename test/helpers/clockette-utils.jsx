@@ -3,12 +3,11 @@
 import React from 'react/addons';
 const ReactTestUtils = React.addons.TestUtils;
 
-
 class RenderedComponent {
 
   constructor(component) {
     this.component = component;
-    this.renderedComponent = ReactTestUtils.renderIntoDocument(component);
+    this.renderedComponent = ReactTestUtils.renderIntoDocument(this.component);
   }
 
   /**
@@ -43,8 +42,25 @@ class RenderedComponent {
 
 }
 
-const ClocketteUtils = (component) => {
-  return new RenderedComponent(component);
+const ClocketteUtils = {
+  $: function $(component) {
+    return new RenderedComponent(component);
+  },
+
+  spyOnActionHandler: function spyOnActionHandler(options) {
+    const { store, method, action } = options;
+
+    action.emitter.removeAllListeners();
+    spyOn(store, method);
+    action.listen(store[method]);
+
+    return {
+      store,
+      method,
+      action,
+      callback: store[method]
+    };
+  },
 };
 
 export default ClocketteUtils;

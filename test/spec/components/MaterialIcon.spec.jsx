@@ -1,15 +1,18 @@
 'use strict';
 
+import React from 'react/addons';
+import { $ } from 'test/helpers/clockette-utils.jsx';
+import MaterialIcon from 'components/MaterialIcon.jsx';
+import IconLanguage from 'material-design-icons/action/svg/production/ic_language_48px.svg';
+
 describe('MaterialIcon', function () {
-  var React = require('react/addons');
-  var MaterialIcon, component;
+  var $component;
 
   beforeEach(function () {
-    MaterialIcon = require('components/MaterialIcon.jsx');
-    component = React.createElement(MaterialIcon);
+    $component = $(<MaterialIcon icon={IconLanguage}/>);
   });
 
   it('should create a new instance of MaterialIcon', function () {
-    expect(component).toBeDefined();
+    expect($component).toBeDefined();
   });
 });

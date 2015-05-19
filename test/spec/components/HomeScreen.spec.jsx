@@ -1,15 +1,17 @@
 'use strict';
 
 import React from 'react/addons';
-import $ from 'test/helpers/clockette-utils.jsx';
+import { $ } from 'test/helpers/clockette-utils.jsx';
+import stubRouterContext from 'test/helpers/stubRouterContext';
+import HomeScreen from 'components/HomeScreen.jsx';
 
 
 describe('HomeScreen', function() {
-  let Home, $component;
+  const StubbedHome = stubRouterContext(HomeScreen);
+  let $component;
 
   beforeEach(function() {
-    Home = require('components/HomeScreen.jsx');
-    $component = $(<Home/>);
+    $component = $(<StubbedHome/>);
   });
 
 

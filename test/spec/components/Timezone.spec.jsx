@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react/addons';
-import $ from 'test/helpers/clockette-utils.jsx';
+import { $ } from 'test/helpers/clockette-utils.jsx';
 
 
 describe('Timezone', function() {
