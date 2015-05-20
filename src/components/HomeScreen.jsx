@@ -15,8 +15,8 @@ import 'styles/HomeScreen.scss';
 const HomeScreen = React.createClass({
 
   render() {
+    const now = new Date(this.props.ts);
 
-    const now = new Date();
     const userTimezones = UserStore.data.map((timezone) => {
       const timezoneMoment = Moment(now).tz(timezone.zone);
       let timezoneDay;
@@ -49,12 +49,12 @@ const HomeScreen = React.createClass({
       <div className="HomeScreen">
 
         <div className="HomeScreen__top">
-          <Timezone className="HomeScreen__clock" ts={this.props.ts}>
+          <Timezone className="HomeScreen__clock" ts={+now}>
             <span className="HomeScreen__clock-time">h:mm</span>
             <span className="HomeScreen__clock-ampm">A</span>
           </Timezone>
 
-          <Timezone className="HomeScreen__date" ts={this.props.ts}>
+          <Timezone className="HomeScreen__date" ts={+now}>
             <span>ddd, MMMM D</span>
           </Timezone>
         </div>
