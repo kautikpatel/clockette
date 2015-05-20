@@ -18,15 +18,22 @@ const ClocketteApp = React.createClass({
   },
 
   componentDidMount() {
-    this.interval = setInterval(() => {
-      this.setState({
-        ts: Date.now()
-      });
-    }, 1000 * 30);
+    let adjustInterval = setInterval(() => {
+      const now = new Date();
+      if (now.getSeconds() === 0) {
+        clearInterval(adjustInterval);
+        this.updateTS();
+        this.interval = setInterval(this.updateTS, 1000 * 60);
+      }
+    }, 1000);
   },
 
   componentWillUnmount() {
     clearInterval(this.interval);
+  },
+
+  updateTS() {
+    this.setState({ ts: Date.now() });
   },
 
   render() {
