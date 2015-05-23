@@ -113,6 +113,8 @@ A Timezone Object will be pre-processed from [Moment-Timezone Zone Object](http:
     
 We'll mostly use the offset to curry the creation of Timezone Components. Because each zone is unique but offset are shared between more than one city, we'll curry a function with the same timestamp and offset to return one instance per offset, instead one instance per zone id.
 
+Based on `moment-timezone`'s data, there's 266 different offsets in the world (including daylight ones).
+
 ### Immutability
 In order to enforce state consistency and ensure data flow will be unique, without data collision, we'll give a try at Facebook's [immutable.js](https://github.com/facebook/immutable-js) library:
 
@@ -126,3 +128,14 @@ Then, data comparison performance will be highly improved by performing a memory
     map1.get('b'); // 2
     map2.get('b'); // 50
     map1 === map2 // false
+    
+
+## User Experience
+
+### Component's State
+
+### Optimistic Rendering
+
+## TODO
+- memoize `<Timezone>` creations when offset & timestamp aren't changed
+- do not render the full available timezone list, try to render on-the fly depending on the user's scrolling status
