@@ -7,7 +7,8 @@
 'use strict';
 
 var webpack = require('webpack'),
-  path = require('path');
+  path = require('path'),
+  webpackDevConfig = require('./webpack.config.js');
 
 module.exports = {
 
@@ -33,31 +34,6 @@ module.exports = {
     new webpack.optimize.AggressiveMergingPlugin()
   ],
 
-  resolve: {
-    extensions: ['', '.json', '.js', '.jsx'],
-    alias: {
-      'actions': __dirname + '/src/actions/',
-      'components': __dirname + '/src/components/',
-      'mixins': __dirname + '/src/mixins',
-      'routes': __dirname + '/src/routes/',
-      'stores': __dirname + '/src/stores/',
-      'styles': __dirname + '/src/styles'
-    }
-  },
-
-  module: {
-    preLoaders: [{
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loader: 'jsxhint'
-    }],
-
-    loaders: [
-      { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader'},
-      { test: /\.css$/, loader: 'style-loader!css-loader'},
-      { test: /\.scss/, loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded' },
-      { test: /\.(png|jpg|woff|woff2)$/, loader: 'url-loader?limit=8192'},
-      { test: /\.json$/, loader: 'json-loader'}
-    ]
-  }
+  resolve: webpackDevConfig.resolve,
+  module: webpackDevConfig.module
 };
