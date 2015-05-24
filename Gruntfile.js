@@ -13,7 +13,6 @@ var CONF = {
 };
 
 module.exports = function (grunt) {
-  // Let *load-grunt-tasks* require everything
   require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
