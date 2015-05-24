@@ -52,40 +52,72 @@ const UserTimezones = React.createClass({
 const AvailableTimezones = React.createClass({
 
   getInitialState() {
+    this.list = TimezoneStore.getSeq().filter(
+      (timezone) => !UserStore.data.contains(timezone)
+    );
+
     return {
-      list: TimezoneStore.data,
+      section: 1,
     };
   },
 
+  componentDidMount() {
+    this.onScroll = _.throttle(this._onScroll(), 150);
+    window.addEventListener('scroll', this.onScroll);
+  },
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+  },
+
+  _onScroll() {
+    const win = window;
+    const container = this.refs.container.getDOMNode();
+    let containerCR = container.getBoundingClientRect();
+
+    const body = document.body;
+    const clientHeight = body.clientHeight;
+    let limit = body.scrollHeight - clientHeight;
+
+    return function onScroll(e) {
+      const section = this.state.section;
+      if (limit - win.scrollY < 500) {
+        this.setState({ section: section + 1 }, () => {
+          limit = body.scrollHeight - clientHeight;
+        });
+      }
+    }.bind(this);
+  },
+
   render() {
+    const list = this.list
+      .slice(0, this.state.section * 20)
+      .toArray();
+
     let indexes = Immutable.List();
 
-    const list = this.state.list
-      .filter((timezone) => !UserStore.data.contains(timezone))
-      .map((timezone) => {
-        const index = timezone.name[0];
-        let data;
-
-        if (!indexes.contains(index)) {
-          data = {
-            'data-index': index
-          };
-          indexes = indexes.push(index);
-        }
-
-        return (
-          <TimezoneListRow key={'available.' + timezone.zone}
-            className="AddTimezoneScreen__timezoneListRow"
-            timezone={timezone}
-            ts={this.props.ts}
-            selected={false}
-            data={data}/>
-        );
-      });
-
     return (
-      <div className="AddTimezoneScreen__availableTimezones">
-        {list}
+      <div className="AddTimezoneScreen__availableTimezones" ref="container">
+        {list.map((timezone) => {
+          const index = timezone.name[0];
+          let data = null;
+
+          if (indexes.indexOf(index) === -1) {
+            indexes = indexes.push(index);
+            data = {
+              'data-index': index
+            };
+          }
+
+          return (
+            <TimezoneListRow key={'available.' + timezone.zone}
+              className="AddTimezoneScreen__timezoneListRow"
+              timezone={timezone}
+              ts={this.props.ts}
+              selected={false}
+              data={data}/>
+          );
+        })}
       </div>
     );
   }

@@ -58,17 +58,17 @@
 
 .HomeScreen__userTimezone {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   margin-bottom: 20px;
 }
 
 .HomeScreen__userTimezone__city {
   flex: 1;
   text-align: left;
+  align-self: center;
   font-size: 1.3rem;
   font-weight: 400;
   text-transform: capitalize;
-  vertical-align: middle;
 }
 .HomeScreen__userTimezone__day {
   color: rgba(255,255,255, .7);
