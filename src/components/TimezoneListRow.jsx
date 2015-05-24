@@ -19,21 +19,21 @@ const TimezoneListRow = React.createClass({
 
   getInitialState() {
     return {
-      selected: this.props.selected
+      selected: !!this.props.selected
     };
   },
 
   toggle() {
     const selected = !this.state.selected;
 
-    this.setState({ selected });
-
-    if (selected) {
-      UserActions.add(this.props.timezone);
-    }
-    else {
-      UserActions.remove(this.props.timezone);
-    }
+    this.setState({ selected }, () => {
+      if (selected) {
+        UserActions.add(this.props.timezone);
+      }
+      else {
+        UserActions.remove(this.props.timezone);
+      }
+    });
   },
 
   render() {
