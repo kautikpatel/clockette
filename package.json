@@ -1,9 +1,12 @@
 {
   "name": "clockette",
-  "version": "0.0.0",
-  "description": "",
-  "repository": "",
+  "version": "1.0.0",
   "private": true,
+  "description": "World Clock Web Application",
+  "repository": "https://github.com/rhumlover/clockette.git",
+  "author": "Thomas Le Jeune <thomastheyoung@gmail.com>",
+  "license": "MIT",
+
   "config": {
     "src": "src",
     "test": "test",
@@ -13,6 +16,7 @@
     "port_server": 8000,
     "port_test": 8001
   },
+
   "dependencies": {
     "immutable": "^3.7.2",
     "lodash": "^3.9.1",
@@ -23,6 +27,7 @@
     "react-router": "^0.13.3",
     "reflux": "^0.2.7"
   },
+
   "devDependencies": {
     "babel": "^4.0.0",
     "babel-loader": "^4.0.0",
