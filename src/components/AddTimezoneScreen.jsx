@@ -5,11 +5,14 @@ import React from 'react';
 import Reflux from 'reflux';
 import Immutable from 'immutable';
 import { Link } from 'react-router';
+
 import UserActions from 'actions/UserActionCreators';
+
 import MaterialIcon from 'components/MaterialIcon';
 import Searchbar from 'components/Searchbar';
 import Timezone from 'components/Timezone';
 import TimezoneListRow from 'components/TimezoneListRow';
+
 import TimezoneStore from 'stores/TimezoneStore';
 import UserStore from 'stores/UserStore';
 
@@ -72,18 +75,24 @@ const AvailableTimezones = React.createClass({
 
   _onScroll() {
     const win = window;
-    const container = this.refs.container.getDOMNode();
-    let containerCR = container.getBoundingClientRect();
-
     const body = document.body;
     const clientHeight = body.clientHeight;
+
     let limit = body.scrollHeight - clientHeight;
+    let hold = false;
 
     return function onScroll(e) {
+      if (hold) {
+        return;
+      }
+
       const section = this.state.section;
+
       if (limit - win.scrollY < 500) {
+        hold = true;
         this.setState({ section: section + 1 }, () => {
           limit = body.scrollHeight - clientHeight;
+          hold = false;
         });
       }
     }.bind(this);
