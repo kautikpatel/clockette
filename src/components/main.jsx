@@ -1,14 +1,14 @@
 'use strict';
 
-var ClocketteApp = require('./ClocketteApp');
-var React = require('react');
-var Router = require('react-router');
-var Route = Router.Route;
+import ClocketteApp from './ClocketteApp';
+import React from 'react';
+import Router from 'react-router';
+import HomeScreen from './HomeScreen';
+import AddTimezoneScreen from './AddTimezoneScreen';
 
-var HomeScreen = require('./HomeScreen');
-var AddTimezoneScreen = require('./AddTimezoneScreen');
+const Route = Router.Route;
 
-var Routes = (
+const Routes = (
   <Route handler={ClocketteApp}>
     <Route name="/" handler={HomeScreen}/>
     <Route name="/timezones" handler={AddTimezoneScreen}/>

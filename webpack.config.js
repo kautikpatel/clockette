@@ -12,8 +12,8 @@ var webpack = require('webpack'),
 module.exports = {
 
   output: {
-    filename: 'main.js',
-    publicPath: '/assets/'
+    publicPath: '/assets/',
+    filename: 'main.js'
   },
 
   cache: true,
@@ -22,7 +22,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:8000',
     'webpack/hot/only-dev-server',
-    './src/components/main.js'
+    './src/components/main.jsx'
   ],
 
   stats: {

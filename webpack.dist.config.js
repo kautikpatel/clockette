@@ -20,7 +20,7 @@ module.exports = {
 
   debug: false,
   devtool: false,
-  entry: './src/components/main.js',
+  entry: './src/components/main.jsx',
 
   stats: {
     colors: true,
