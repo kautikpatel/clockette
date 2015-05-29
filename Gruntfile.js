@@ -18,6 +18,15 @@ module.exports = function (grunt) {
   grunt.initConfig({
     pkg: CONF.pkg,
 
+    env: {
+      dev: {
+        NODE_ENV: 'development'
+      },
+      build: {
+        NODE_ENV: 'production'
+      }
+    },
+
     webpack: {
       options: CONF.webpack.dist,
       dist: {
@@ -65,7 +74,8 @@ module.exports = function (grunt) {
         app: 'Google Chrome Canary'
       },
       dist: {
-        path: 'http://localhost:<%= connect.options.port %>/'
+        path: 'http://localhost:<%= connect.options.port %>/',
+        app: 'Google Chrome Canary'
       }
     },
 
@@ -109,12 +119,12 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('serve', function (target) {
-    if (target === 'dist') {
+    if (target === 'build') {
       return grunt.task.run(['build', 'open:dist', 'connect:dist']);
     }
 
     if (target === 'open') {
-      return grunt.task.run(['open:dev', 'webpack-dev-server']);
+      return grunt.task.run(['env:dev', 'open:dev', 'webpack-dev-server']);
     }
 
     grunt.task.run(['webpack-dev-server']);
@@ -122,7 +132,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', ['karma']);
 
-  grunt.registerTask('build', ['clean', 'copy', 'webpack']);
+  grunt.registerTask('build', ['env:build', 'clean', 'copy', 'webpack']);
 
-  grunt.registerTask('default', []);
+  grunt.registerTask('default', ['build']);
 };

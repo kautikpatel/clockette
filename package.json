@@ -6,7 +6,6 @@
   "repository": "https://github.com/rhumlover/clockette.git",
   "author": "Thomas Le Jeune <thomastheyoung@gmail.com>",
   "license": "MIT",
-
   "config": {
     "src": "src",
     "test": "test",
@@ -16,7 +15,6 @@
     "port_server": 8000,
     "port_test": 8001
   },
-
   "dependencies": {
     "immutable": "^3.7.2",
     "lodash": "^3.9.1",
@@ -27,15 +25,16 @@
     "react-router": "^0.13.3",
     "reflux": "^0.2.7"
   },
-
   "devDependencies": {
     "babel": "^4.0.0",
     "babel-loader": "^4.0.0",
+    "compression-webpack-plugin": "^0.2.0",
     "css-loader": "~0.9.0",
     "grunt": "~0.4.5",
     "grunt-contrib-clean": "~0.6.0",
     "grunt-contrib-connect": "~0.8.0",
     "grunt-contrib-copy": "~0.5.0",
+    "grunt-env": "^0.4.4",
     "grunt-karma": "~0.8.3",
     "grunt-open": "~0.2.3",
     "grunt-webpack": "~1.0.8",
