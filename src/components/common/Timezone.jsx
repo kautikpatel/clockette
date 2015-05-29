@@ -1,13 +1,17 @@
 'use strict';
 
 import _ from 'lodash';
-import React from 'react';
+import React from 'react/addons';
 import Moment from 'moment-timezone';
 
 import 'styles/Timezone.scss';
 
+const PureRenderMixin = React.addons.PureRenderMixin;
+
 
 const Timezone = React.createClass({
+
+  mixins: [PureRenderMixin],
 
   propTypes: {
     'zone': React.PropTypes.string,

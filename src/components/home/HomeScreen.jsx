@@ -3,8 +3,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Moment from 'moment-timezone';
-import MaterialIcon from 'components/MaterialIcon';
-import Timezone from 'components/Timezone';
+import MaterialIcon from 'components/common/MaterialIcon';
+import Timezone from 'components/common/Timezone';
 import UserStore from 'stores/UserStore';
 
 import IconLanguage from 'material-design-icons/action/svg/production/ic_language_48px.svg';

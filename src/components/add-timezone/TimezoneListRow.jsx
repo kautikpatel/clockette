@@ -1,15 +1,19 @@
 'use strict';
 
 import _ from 'lodash';
-import React from 'react';
+import React from 'react/addons';
 import UserActions from 'actions/UserActionCreators';
-import Checkbox from 'components/Checkbox';
-import Timezone from 'components/Timezone';
+import Checkbox from 'components/common/Checkbox';
+import Timezone from 'components/common/Timezone';
 
 import 'styles/TimezoneListRow.scss';
 
+const PureRenderMixin = React.addons.PureRenderMixin;
+
 
 const TimezoneListRow = React.createClass({
+
+  mixins: [PureRenderMixin],
 
   propTypes: {
     'timezone': React.PropTypes.object,

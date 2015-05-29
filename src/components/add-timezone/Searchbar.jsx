@@ -3,7 +3,7 @@
 import _ from 'lodash';
 import React from 'react';
 import UserActions from 'actions/UserActionCreators';
-import MaterialIcon from 'components/MaterialIcon';
+import MaterialIcon from 'components/common/MaterialIcon';
 
 import IconSearch from 'material-design-icons/action/svg/production/ic_search_48px.svg';
 import IconClose from 'material-design-icons/navigation/svg/production/ic_close_48px.svg';
