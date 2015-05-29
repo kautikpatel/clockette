@@ -23,17 +23,6 @@ const AvailableTimezonesList = React.createClass({
     };
   },
 
-  componentWillMount() {
-    // Perf.start();
-    this.startTime = Date.now();
-  },
-
-  componentDidMount() {
-    // Perf.stop();
-    // Perf.printWasted();
-    console.log(Date.now() - this.startTime);
-  },
-
   render() {
     let indexes = Immutable.List();
 
