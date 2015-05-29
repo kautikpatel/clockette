@@ -3,8 +3,8 @@
 import ClocketteApp from './ClocketteApp';
 import React from 'react';
 import Router from 'react-router';
-import HomeScreen from './HomeScreen';
-import AddTimezoneScreen from './AddTimezoneScreen';
+import HomeScreen from './home/HomeScreen';
+import AddTimezoneScreen from './add-timezone/AddTimezoneScreen';
 
 const Route = Router.Route;
 
