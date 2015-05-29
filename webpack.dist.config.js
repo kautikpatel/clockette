@@ -8,6 +8,7 @@
 
 var webpack = require('webpack'),
   path = require('path'),
+  CompressionPlugin = require('compression-webpack-plugin'),
   webpackDevConfig = require('./webpack.config.js');
 
 module.exports = {
@@ -29,9 +30,31 @@ module.exports = {
 
   plugins: [
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      mangle: {
+        except: ['require', 'export', '$super']
+      },
+      compress: {
+        warnings: false,
+        sequences: true,
+        dead_code: true,
+        conditionals: true,
+        booleans: true,
+        unused: true,
+        if_return: true,
+        join_vars: true,
+        drop_console: true
+      }
+    }),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.AggressiveMergingPlugin()
+    new webpack.optimize.AggressiveMergingPlugin(),
+    new CompressionPlugin({
+      asset: '{file}.gz',
+      algorithm: 'gzip',
+      regExp: /\.js$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.8
+    })
   ],
 
   resolve: webpackDevConfig.resolve,
